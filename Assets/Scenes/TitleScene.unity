@@ -272,7 +272,7 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
-  _toOutGameSceneButton: {fileID: 673842234}
+  _loginButton: {fileID: 673842234}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using Domain.UseCase.Pane;
+using Infrastructure.Repository.Api;
 using UnityEngine;
 using VContainer;
 using Presentation.Presenter.Pane;
@@ -10,14 +11,18 @@ namespace Application.LifetimeScope.Pane
     public class TitlePaneLifetimeScope : VContainer.Unity.LifetimeScope
     {
         [SerializeField]
-        private NormalButton _toOutGameSceneButton;
+        private NormalButton _loginButton;
 
         protected override void Configure(IContainerBuilder builder)
         {
             // EntryPoint
             builder.RegisterEntryPoint<TitlePaneEntryPointUseCase>();
 
-            builder.Register(_ => new TitlePanePresenter(_toOutGameSceneButton), Lifetime.Scoped).AsImplementedInterfaces();
+            // Repository
+            builder.Register<LoginApiRepository>(Lifetime.Scoped).AsImplementedInterfaces();
+
+            // Presenter
+            builder.Register(_ => new TitlePanePresenter(_loginButton), Lifetime.Scoped).AsImplementedInterfaces();
         }
     }
 }

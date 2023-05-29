@@ -1,36 +1,22 @@
 using System;
-using Domain.UseCase.Interface;
+using Domain.UseCase.Interface.Presenter;
 using UniRx;
-using VContainer;
 using Presentation.Presenter.Interface;
-using UnityEngine.SceneManagement;
 
 namespace Presentation.Presenter.Pane
 {
-    public class TitlePanePresenter : ITitlePanePresenter, IDisposable
+    public class TitlePanePresenter : ITitlePanePresenter
     {
-        private readonly IButton _toOutGameSceneButton;
-        private readonly CompositeDisposable _selfDisposables;
+        private readonly IButton _loginButton;
 
-        [Inject]
-        public TitlePanePresenter(IButton toOutGameSceneButton)
+        public TitlePanePresenter(IButton loginButton)
         {
-            _toOutGameSceneButton = toOutGameSceneButton;
-            _selfDisposables = new CompositeDisposable();
+            _loginButton = loginButton;
         }
 
-        public void Initialize()
+        public IObservable<Unit> OnClickLoginButtonAsObservable()
         {
-            _toOutGameSceneButton.OnClickAsObservable().Subscribe(_ =>
-            {
-                SceneManager.LoadScene("OutGameScene");
-            })
-            .AddTo(_selfDisposables);
-        }
-
-        public void Dispose()
-        {
-            _selfDisposables.Clear();
+            return _loginButton.OnClickAsObservable();
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿namespace Domain.UseCase.Interface
+﻿using System;
+
+namespace Domain.UseCase.Interface.Presenter
 {
     public interface ITitlePanePresenter
     {
-        void Initialize();
+        IObservable<UniRx.Unit> OnClickLoginButtonAsObservable();
     }
 }
