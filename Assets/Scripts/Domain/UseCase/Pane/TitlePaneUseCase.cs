@@ -8,21 +8,21 @@ using UnityEngine;
 
 namespace Domain.UseCase.Pane
 {
-    public class TitlePaneEntryPointUseCase : IStartable, IDisposable
+    public class TitlePaneUseCase : IDisposable
     {
         private readonly ILoginApiRepository _loginApiRepository;
         private readonly ITitlePanePresenter _titlePanePresenter;
         private readonly CompositeDisposable _selfDisposables;
 
         [Inject]
-        public TitlePaneEntryPointUseCase(ILoginApiRepository loginApiRepository, ITitlePanePresenter titlePanePresenter)
+        public TitlePaneUseCase(ILoginApiRepository loginApiRepository, ITitlePanePresenter titlePanePresenter)
         {
             _loginApiRepository = loginApiRepository;
             _titlePanePresenter = titlePanePresenter;
             _selfDisposables = new CompositeDisposable();
         }
 
-        public void Start()
+        public void Initialize()
         {
             _titlePanePresenter.OnClickLoginButtonAsObservable().Subscribe(async _ =>
                 {

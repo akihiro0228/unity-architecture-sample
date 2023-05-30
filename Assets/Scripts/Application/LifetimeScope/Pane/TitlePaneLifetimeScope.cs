@@ -1,5 +1,6 @@
 using Domain.UseCase.Pane;
 using Infrastructure.Repository.Api;
+using Presentation.Controller.Pane;
 using UnityEngine;
 using VContainer;
 using Presentation.Presenter.Pane;
@@ -15,8 +16,11 @@ namespace Application.LifetimeScope.Pane
 
         protected override void Configure(IContainerBuilder builder)
         {
-            // EntryPoint
-            builder.RegisterEntryPoint<TitlePaneEntryPointUseCase>();
+            // Controller
+            builder.RegisterEntryPoint<TitlePaneController>();
+
+            // UseCase
+            builder.Register<TitlePaneUseCase>(Lifetime.Scoped).AsImplementedInterfaces().AsSelf();
 
             // Repository
             builder.Register<LoginApiRepository>(Lifetime.Scoped).AsImplementedInterfaces();
