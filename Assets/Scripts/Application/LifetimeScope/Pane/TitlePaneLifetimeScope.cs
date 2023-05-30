@@ -1,3 +1,4 @@
+using Device.Service.Api;
 using Domain.UseCase.Pane;
 using Gateway.Repository.Api;
 using Presentation.Controller.Pane;
@@ -24,6 +25,9 @@ namespace Application.LifetimeScope.Pane
 
             // Repository
             builder.Register<LoginApiRepository>(Lifetime.Scoped).AsImplementedInterfaces();
+
+            // Service
+            builder.Register<LoginApiService>(Lifetime.Scoped).AsImplementedInterfaces();
 
             // Presenter
             builder.Register(_ => new TitlePanePresenter(_loginButton), Lifetime.Scoped).AsImplementedInterfaces();

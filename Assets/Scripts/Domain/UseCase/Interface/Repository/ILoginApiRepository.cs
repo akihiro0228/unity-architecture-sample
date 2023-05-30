@@ -5,6 +5,6 @@ namespace Domain.UseCase.Interface.Repository
 {
     public interface ILoginApiRepository
     {
-        UniTask<LoginOutput> Login();
+        UniTask<LoginApiRepositoryOutput> Login();
     }
 }
