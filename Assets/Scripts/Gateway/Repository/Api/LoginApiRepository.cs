@@ -2,7 +2,7 @@
 using Domain.UseCase.Interface.Repository;
 using Domain.ValueObject.Repository.Api;
 
-namespace Infrastructure.Repository.Api
+namespace Gateway.Repository.Api
 {
     public class LoginApiRepository : ILoginApiRepository
     {

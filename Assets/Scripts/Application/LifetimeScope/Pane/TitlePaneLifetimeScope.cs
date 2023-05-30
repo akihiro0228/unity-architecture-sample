@@ -1,11 +1,11 @@
 using Domain.UseCase.Pane;
-using Infrastructure.Repository.Api;
+using Gateway.Repository.Api;
 using Presentation.Controller.Pane;
 using UnityEngine;
 using VContainer;
 using Presentation.Presenter.Pane;
 using VContainer.Unity;
-using View.UI.Button;
+using IO.UI.Button;
 
 namespace Application.LifetimeScope.Pane
 {

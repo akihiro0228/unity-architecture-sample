@@ -3,7 +3,7 @@ using Presentation.Presenter.Interface;
 using UniRx;
 using UnityEngine;
 
-namespace View.UI.Button
+namespace IO.UI.Button
 {
     public class NormalButton : MonoBehaviour, IButton
     {
