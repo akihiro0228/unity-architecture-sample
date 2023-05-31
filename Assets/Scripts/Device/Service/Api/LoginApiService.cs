@@ -1,12 +1,12 @@
 ﻿using Cysharp.Threading.Tasks;
 using Gateway.Repository.Interface;
-using Gateway.ValueObject.Service.Api;
+using Gateway.ValueObject.Service.Api.LoginApiService;
 
 namespace Device.Service.Api
 {
     public class LoginApiService : ILoginApiService
     {
-        public async UniTask<LoginApiServiceOutput> Login()
+        public async UniTask<LoginOutput> Login()
         {
             await UniTask.SwitchToThreadPool();
 
@@ -15,7 +15,7 @@ namespace Device.Service.Api
 
             await UniTask.SwitchToMainThread();
 
-            return new LoginApiServiceOutput("Bob");
+            return new LoginOutput("Bob");
         }
     }
 }

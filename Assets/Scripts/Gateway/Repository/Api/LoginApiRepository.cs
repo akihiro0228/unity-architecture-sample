@@ -1,6 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using Domain.UseCase.Interface.Repository;
-using Domain.ValueObject.Repository.Api;
+using Domain.ValueObject.Repository.Api.LoginApiRepository;
 using Gateway.Repository.Interface;
 using VContainer;
 
@@ -16,10 +16,10 @@ namespace Gateway.Repository.Api
             _loginApiService = loginApiService;
         }
 
-        public async UniTask<LoginApiRepositoryOutput> Login()
+        public async UniTask<LoginOutput> Login()
         {
             var response = await _loginApiService.Login();
-            return new LoginApiRepositoryOutput(response.PlayerName);
+            return new LoginOutput(response.PlayerName);
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using Cysharp.Threading.Tasks;
-using Domain.ValueObject.Repository.Api;
+using Domain.ValueObject.Repository.Api.LoginApiRepository;
 
 namespace Domain.UseCase.Interface.Repository
 {
     public interface ILoginApiRepository
     {
-        UniTask<LoginApiRepositoryOutput> Login();
+        UniTask<LoginOutput> Login();
     }
 }
