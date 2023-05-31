@@ -1,0 +1,21 @@
+{
+    "name": "ApplicationAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e64dcbd1cf58c3f498694a700fa8e8c6",
+        "GUID:9e0ad7f32995eb54aa6163eb8e189a84",
+        "GUID:d8d69bcb542d50046bd4dd584fd3b221",
+        "GUID:ef7679b3aa612004180e836db2cefd56",
+        "GUID:0db1c3799688fb64aaa43ade5143f696",
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
