@@ -8,7 +8,13 @@ namespace Device.Service.Api
     {
         public async UniTask<LoginApiServiceOutput> Login()
         {
+            await UniTask.SwitchToThreadPool();
+
+            // API通信処理は別スレッドへ移譲
             await UniTask.Delay(3000);
+
+            await UniTask.SwitchToMainThread();
+
             return new LoginApiServiceOutput("Bob");
         }
     }
