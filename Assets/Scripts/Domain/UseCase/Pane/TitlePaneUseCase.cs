@@ -5,31 +5,37 @@ using VContainer;
 using VContainer.Unity;
 using UniRx;
 using UnityEngine;
+using System.Threading.Tasks;
 
 namespace Domain.UseCase.Pane
 {
     public class TitlePaneUseCase : IDisposable
     {
+        public class Response
+        {
+            public string PlayerName { get; }   
+            public Response(string PlayerName)
+            {
+                this.PlayerName = PlayerName;
+            }
+        };
+
         private readonly ILoginApiRepository _loginApiRepository;
-        private readonly ITitlePanePresenter _titlePanePresenter;
         private readonly CompositeDisposable _selfDisposables;
 
         [Inject]
-        public TitlePaneUseCase(ILoginApiRepository loginApiRepository, ITitlePanePresenter titlePanePresenter)
+        public TitlePaneUseCase(ILoginApiRepository loginApiRepository)
         {
             _loginApiRepository = loginApiRepository;
-            _titlePanePresenter = titlePanePresenter;
             _selfDisposables = new CompositeDisposable();
         }
 
-        public void Initialize()
+        public async Task<Response> InvokeAsync()
         {
-            _titlePanePresenter.OnClickLoginButtonAsObservable().Subscribe(async _ =>
-                {
-                    var output = await _loginApiRepository.Login();
-                    Debug.Log($"login name is {output.PlayerName}");
-                })
-                .AddTo(_selfDisposables);
+            Debug.Log("Login >>>");
+            var output = await _loginApiRepository.Login();
+            Debug.Log("Login <<<");
+            return new Response(output.PlayerName);
         }
 
         public void Dispose()

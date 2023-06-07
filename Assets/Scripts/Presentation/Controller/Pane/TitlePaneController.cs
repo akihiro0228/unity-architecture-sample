@@ -16,7 +16,7 @@ namespace Presentation.Controller.Pane
 
         public void Start()
         {
-            _titlePaneUseCase.Initialize();
+            
         }
     }
 }
