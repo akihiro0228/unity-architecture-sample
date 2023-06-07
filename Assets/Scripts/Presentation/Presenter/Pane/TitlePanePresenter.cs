@@ -2,21 +2,32 @@ using System;
 using Domain.UseCase.Interface.Presenter;
 using UniRx;
 using Presentation.Presenter.Interface;
+using Domain.UseCase.Pane;
+using UnityEngine;
+using VContainer;
+using System.Threading.Tasks;
 
 namespace Presentation.Presenter.Pane
 {
     public class TitlePanePresenter : ITitlePanePresenter
     {
-        private readonly IButton _loginButton;
+        private readonly TitlePaneUseCase _titlePaneUseCase;
 
-        public TitlePanePresenter(IButton loginButton)
+        [Inject]
+        public TitlePanePresenter(TitlePaneUseCase titlePaneUseCase)
         {
-            _loginButton = loginButton;
+            _titlePaneUseCase = titlePaneUseCase;
+        }
+
+        public async Task<string> LoginAsync()
+        {
+            var response = await _titlePaneUseCase.InvokeAsync();
+            return response.PlayerName;
         }
 
         public IObservable<Unit> OnClickLoginButtonAsObservable()
         {
-            return _loginButton.OnClickAsObservable();
+            return null;
         }
     }
 }

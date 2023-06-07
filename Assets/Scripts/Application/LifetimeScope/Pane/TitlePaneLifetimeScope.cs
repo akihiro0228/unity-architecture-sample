@@ -21,6 +21,7 @@ namespace Application.LifetimeScope.Pane
             builder.RegisterEntryPoint<TitlePaneController>();
 
             // UseCase
+            builder.Register<TitlePanePresenter>(Lifetime.Scoped);
             builder.Register<TitlePaneUseCase>(Lifetime.Scoped).AsImplementedInterfaces().AsSelf();
 
             // Repository
@@ -28,9 +29,6 @@ namespace Application.LifetimeScope.Pane
 
             // Service
             builder.Register<LoginApiService>(Lifetime.Scoped).AsImplementedInterfaces();
-
-            // Presenter
-            builder.Register(_ => new TitlePanePresenter(_loginButton), Lifetime.Scoped).AsImplementedInterfaces();
         }
     }
 }
