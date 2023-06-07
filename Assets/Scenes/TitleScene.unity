@@ -275,7 +275,8 @@ MonoBehaviour:
   parentReference:
     TypeName: 
   autoRun: 1
-  autoInjectGameObjects: []
+  autoInjectGameObjects:
+  - {fileID: 1208031751}
   _loginButton: {fileID: 673842234}
 --- !u!1 &259177001
 GameObject:
